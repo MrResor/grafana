@@ -1,0 +1,21 @@
+{
+  "name": "grafana",
+  "version": "1.0.0",
+  "description": "API serving data for grafana",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "grafana"
+  ],
+  "author": "Mr.Resor",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "standard": "^17.1.2",
+    "supertest": "^7.1.1",
+    "vitest": "^3.2.4",
+    "winston": "^3.17.0"
+  }
+}
