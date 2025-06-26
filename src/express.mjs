@@ -1,6 +1,8 @@
 import cors from 'cors'
 import express from 'express'
 
+import { hello } from './api/hello/index.mjs'
+
 const app = express()
 const router = express.Router()
 
@@ -40,6 +42,9 @@ router.use((req, _, next) => {
 })
 
 // Routes declaration
+
+// /api/hello
+router.use(hello)
 
 
 app.use(router)
