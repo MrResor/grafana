@@ -1,0 +1,12 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+     - '3000:3000'
+    volumes:
+     - /home/ubuntu/running/logs:/program/logs
+    environment:
+     - NODE_ENV=production
