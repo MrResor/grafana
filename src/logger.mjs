@@ -41,12 +41,12 @@ class LoggerReader {
         // - Write all logs with importance level of `warn` or less to `error.log`
         // - Write all logs with importance level of `info` or less to `combined.log`
         //
-        new winston.transports.File({ filename: `./logs/${project}/error.log`, level: 'warn' }),
-        new winston.transports.File({ filename: `./logs/${project}/combined.log`, level: 'http' })
+        new winston.transports.File({ filename: `./logs/${this.program}/error.log`, level: 'warn' }),
+        new winston.transports.File({ filename: `./logs/${this.program}/combined.log`, level: 'http' })
       ]
     })
 
-    if (db) this.logger.add(new winston.transports.Console({ filename: `./logs/${project}/db.log` }))
+    if (db) this.logger.add(new winston.transports.Console({ filename: `./logs/${this.program}/db.log` }))
   }
 }
 
