@@ -2,6 +2,7 @@ import cors from 'cors'
 import express from 'express'
 
 import { hello } from './api/hello/index.mjs'
+import { project } from './api/project/index.mjs'
 import { logger } from './logger.mjs'
 
 const app = express()
@@ -46,7 +47,8 @@ router.use((req, _, next) => {
 
 // /api/hello
 router.use(hello)
-
+// /api/project
+router.use(project)
 
 app.use(router)
 
