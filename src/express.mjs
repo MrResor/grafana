@@ -24,7 +24,7 @@ router.use((req, _, next) => {
     // check if current rout path matches route request path
     if (stackItem.handle?.stack !== undefined) {
       stackItem?.handle.stack.forEach((innerItem) => {
-        if (innerItem.regexp.test(req.path)) {
+        if (innerItem.regexp?.test(req.path)) {
           hasRouteToHandle = true
         }
       })
