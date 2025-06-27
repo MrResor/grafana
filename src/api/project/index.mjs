@@ -3,7 +3,7 @@ import fs from 'fs'
 
 const project = express.Router()
 
-project.get('/api/hello', (_, res) => {
+project.get('/api/project', (_, res) => {
   const result = fs.readdirSync('./logs', { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
