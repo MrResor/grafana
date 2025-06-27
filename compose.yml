@@ -9,7 +9,7 @@ services:
     environment:
      - NODE_ENV=production
     healthcheck:
-      test: [ "CMD-SHELL", "curl http:/localhost:3000/api/hello" ]
+      test: [ "CMD", "curl", "-f" , "http://localhost:3000/api/hello" ]
       interval: 10s
       retries: 5
       start_period: 30s
