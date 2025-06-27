@@ -18,7 +18,7 @@ jobs:
       - name: Wait for API to be ready and run smoke test
         run: |
           for i in {1..10}; do
-            response=$(curl --silent --show-error --fail http://localhost:3000/api/hello || true)
+            response=$(curl --silent --show-error --fail http://localhost:3456/api/hello || true)
             if [ "$response" = '{"greeting":"hello API"}' ]; then
               echo "Container is running and API is responding"
               exit 0
@@ -27,4 +27,5 @@ jobs:
             sleep 1
           done
           echo "Container did not start in time"
+          docker logs grafana-api-1
           exit 1

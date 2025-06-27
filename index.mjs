@@ -1,8 +1,7 @@
 import { app } from './src/express.mjs'
-//import { logger } from './src/logger.mjs'
+import { logger } from './src/logger.mjs'
 
 // Listen on port set in environment variable or default to 3000
 const listener = app.listen(3000, function () {
-  //logger.info('Your app is listening on port ' + listener.address().port)
-  console.log('Your app is listening on port')
+  logger.info('Your app is listening on port ' + listener.address().port)
 })
