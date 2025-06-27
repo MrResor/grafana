@@ -27,4 +27,5 @@ jobs:
             sleep 1
           done
           echo "Container did not start in time"
+          docker logs grafana-api-1
           exit 1
