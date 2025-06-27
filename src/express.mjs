@@ -2,6 +2,7 @@ import cors from 'cors'
 import express from 'express'
 
 import { hello } from './api/hello/index.mjs'
+import { logger } from './logger.mjs'
 
 const app = express()
 const router = express.Router()
@@ -16,30 +17,30 @@ router.use(cors({ optionsSuccessStatus: 200 })) // some legacy browsers choke on
 router.use(express.json())
 router.use(express.urlencoded({ extended: true }))
 
-// router.use((req, _, next) => {
-//   let hasRouteToHandle = null
-//   router.stack.forEach((stackItem) => {
-//     // check if current rout path matches route request path
-//     if (stackItem.handle?.stack !== undefined) {
-//       stackItem?.handle.stack.forEach((innerItem) => {
-//         if (innerItem.regexp.test(req.path)) {
-//           hasRouteToHandle = true
-//         }
-//       })
-//     }
-//   })
+router.use((req, _, next) => {
+  let hasRouteToHandle = null
+  router.stack.forEach((stackItem) => {
+    // check if current rout path matches route request path
+    if (stackItem.handle?.stack !== undefined) {
+      stackItem?.handle.stack.forEach((innerItem) => {
+        if (innerItem.regexp.test(req.path)) {
+          hasRouteToHandle = true
+        }
+      })
+    }
+  })
 
-//   const msg = `${req.method} ${req.path} - ${req.headers['x-forwarded-for'] || req.ip}`
+  const msg = `${req.method} ${req.path} - ${req.headers['x-forwarded-for'] || req.ip}`
 
-//   if (hasRouteToHandle) {
-//     logger.http(msg)
-//   } else {
-//     // No matching route for this request
-//     logger.error(msg)
-//   }
+  if (hasRouteToHandle) {
+    logger.http(msg)
+  } else {
+    // No matching route for this request
+    logger.error(msg)
+  }
 
-//   next()
-// })
+  next()
+})
 
 // Routes declaration
 
